@@ -1,0 +1,262 @@
+/*
+ * @Author: Dana
+ * @Date: 2023-02-13 11:05:46
+ * @LastEditTime: 2023-02-14 15:49:01
+ * @LastEditors: Dana
+ */
+
+/**
+ * 基础间距样式class
+ * pt-10 上paddin为10rpx
+ * p-row-10 左右padding为10
+ * p-col-10 上下padding为10
+ */
+$indexs: 5, 10, 20, 30, 40, 50, 52,  60, 70, 80, 90, 100, 116, 140, 240;
+@each $index in $indexs {
+	.p#{$index} { padding: #{$index}rpx }
+	.p-row-#{$index} { padding-left: #{$index}rpx; padding-right: #{$index}rpx; }
+	.p-col-#{$index} { padding-top: #{$index}rpx; padding-bottom: #{$index}rpx; }
+	.pt#{$index} { padding-top: #{$index}rpx; }
+	.pr#{$index} { padding-right: #{$index}rpx; }
+	.pb#{$index} { padding-bottom: #{$index}rpx; }
+	.pl#{$index} { padding-left: #{$index}rpx; }
+
+	.m#{$index} { margin: #{$index}rpx }
+	.m-row-#{$index} { margin-left: #{$index}rpx; margin-right: #{$index}rpx; }
+	.m-col-#{$index} {  margin-top: #{$index}rpx; margin-bottom: #{$index}rpx; }
+	.mt#{$index} { margin-top: #{$index}rpx; }
+	.mr#{$index} { margin-right: #{$index}rpx; }
+	.mb#{$index} { margin-bottom: #{$index}rpx; }
+	.ml#{$index} { margin-left: #{$index}rpx; }
+}
+
+/**
+ * 定义基础宽度 class
+ * w50 宽度50rpx
+ * 也可以使用@include other-width()方法 传入其他宽度
+ */
+$widths:10, 20, 30, 50, 60, 80, 90, 100, 110, 120, 130, 150, 160, 200;
+@each $w in $widths {
+	.w#{$w} { width: #{$w}rpx; }
+}
+@mixin other-widths($width) {
+	width: #{$width}rpx;
+}
+
+$heights:10, 20, 30, 50, 60, 70, 80, 90, 100, 120, 150, 160, 200;
+@each $h in $heights {
+	.h#{$h} { height: #{$h}rpx; }
+}
+@mixin other-heights($height) {
+	height: #{$height}rpx;
+}
+
+$sizes: 24, 26, 28, 30, 32, 34, 36, 45, 50;
+@each $s in $sizes {
+	.size#{$s} { font-size: #{$s}rpx; }
+}
+
+$radius: 5, 6, 10, 20, 30, 50;
+@each $r in $radius {
+	.radius#{$r} { border-radius: #{$r}rpx; }
+}
+.radius{
+	border-radius: 50%
+}
+/* 公共button样式修改 */
+button {
+	@extend .h80;
+	display: inline-block;
+	font-size: 34rpx;
+	color: $uni-color-white;
+	line-height: 80rpx;
+	border: none;
+	background-color: $uni-color-info;
+}
+button:after { border: none; }
+button.circle { border-radius: 100rpx; }
+button.btn-block { width: 100%; }
+button.small {
+	@extend .h60;
+	line-height: 60rpx;
+}
+button.large {
+	@extend .h100;
+	line-height: 100rpx;
+}
+
+$types: theme, primary, success, warning, error, info, money;
+$colors: (
+	"theme": $uni-color-theme,
+	"primary": $uni-color-primary,
+	"success": $uni-color-success,
+	"error": $uni-color-error,
+	"warning": $uni-color-warning,
+	"info": $uni-color-info,
+	"money": $uni-text-money
+);
+
+/**
+ * 基础button、文字链接样式
+ * button-primary
+ * button-primary-plain
+ * text-link-primary
+ */
+@each $type in $types {
+	.btn-#{$type} {
+		background-color: map-get($colors, $type);
+	}
+
+	.btn-#{$type}-plain {
+		color: map-get($colors, $type);
+		background-color: transparent;
+		border: 1px solid map-get($colors, $type);
+		box-sizing: border-box;
+	}
+
+	.text-link-#{$type} {
+		color: map-get($colors, $type);
+		text-decoration: underline;
+	}
+}
+
+/* 兼容支付宝写法，按钮只加上disabled属性样式没有变化 */
+button[disabled=true],
+button.btn-disabled {
+	opacity: .6;
+}
+
+/**
+ * 基本阴影
+ * 也可以使用@include other-box-shadow(范围，颜色)方法
+ *  */
+$uni-shadow: 0 0 10rpx rgba(0,0,0,.1);
+.base-box-shadow {
+	box-shadow: $uni-shadow;
+}
+@mixin other-box-shadow($range, $color) {
+	box-shadow: 0 0 #{$range} #{$color};
+}
+
+/**
+ * 基本布局样式
+ */
+@mixin flex-common($flex: flex, $justify: '', $align: '') {
+	display: #{$flex};
+
+	@if $justify != '' {
+		justify-content: #{$justify};
+	}
+	@if $align != '' {
+		align-items: #{$align};
+	}
+}
+
+.flex {
+	@include flex-common(flex)
+	&-justify {
+		@include flex-common(flex, center)
+	}
+	&-align {
+		@include flex-common(flex,'', center)
+	}
+	&-top-align {
+		@include flex-common(flex, '', 'flex-start')
+	}
+	&-justify-align {
+		@include flex-common(flex, center, center)
+	}
+	&-between-align {
+		@include flex-common(flex, 'space-between', center)
+	}
+	&-around-align {
+		@include flex-common(flex, 'space-around', center)
+	}
+	&-left-align {
+		@include flex-common(flex, 'flex-start', center)
+	}
+	&-right-align {
+		@include flex-common(flex, 'flex-end', center)
+	}
+	&-justify-top {
+		@include flex-common(flex, center, 'flex-start')
+	}
+	&-justify-bottom {
+		@include flex-common(flex, center, 'flex-end')
+	}
+	&-column {
+		flex-direction: column;
+	}
+	&-wrap {
+		flex-wrap: wrap;
+	}
+	&-one {
+		flex: 1;
+	}
+}
+
+// @mixin flex-width($width, )
+@mixin horLayout($width: 120rpx, $align: top, $leftClass: '.label', $rightClass: '.box') {
+	@if $align == 'top' {
+		@include flex-common(flex, 'flex-start')
+	}
+	@if $align == 'middle' {
+		@include flex-common(flex, center)
+	}
+	@if $align == 'bottom' {
+		@include flex-common(flex, 'flex-end')
+	}
+
+	#{$leftClass} {
+		width: #{$width};
+	} 
+	#{$rightClass} {
+		width: calc(100% - #{$width});
+		word-wrap: break-word;
+	}
+}
+
+/**
+ * 水平布局
+ */
+.horizon-layout {
+	@include horLayout(140rpx)
+}
+
+/**
+ * 分栏布局
+ * row 子元素之间没有间隔
+ * row-span-20 子元素之间间隔20rpx
+ * col-2 两栏布局
+ * col-3 三栏布局
+ */
+$cols: 2, 3, 4, 5;
+$spans: 10, 15, 20, 25, 30, 35, 40;
+@mixin colGutter($space: 0) {
+	$name: row;
+	@if $space != 0 {
+		$name: row-span-#{$space}
+	}
+	@each $col in $cols {
+		.#{$name} {
+			@include flex-common(flex, 'space-between');
+			flex-wrap: wrap;
+
+			.col-#{$col} {
+				max-width: calc(100% / #{$col} - #{$space}rpx);
+				flex: 0 0 calc(100% / #{$col} - #{$space}rpx);
+				// @extend .p20;
+				// @extend .base-box-shadow;
+				box-sizing: border-box;
+				border-radius: $uni-border-radius-lg;
+			}
+		}
+	}
+}
+
+@include colGutter()
+@each $span in $spans {
+	@include colGutter($span)
+}
+
+

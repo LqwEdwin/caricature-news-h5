@@ -1,0 +1,224 @@
+
+@import "./base.scss";
+
+.per_w50 {
+  width: 50%;
+}
+.bg-white {
+	background-color: $uni-bg-color;
+}
+
+// 字体灰色
+.font-color-grey{
+	color: $uni-text-color-grey;
+}
+.font-color-disable{
+	color: $uni-text-color-disable;
+}
+
+
+// 字体白色
+.font-color-white{
+	color: $uni-text-color-inverse;
+}
+// 字体红色
+.font-color-error{
+	color: $uni-color-error;
+}
+// 字体主题颜色
+.font-color-theme{
+	color: $uni-color-theme;
+}
+// 金额字体颜色
+.font-color-money{
+	color: $uni-text-money;
+}
+// 绿色字体颜色
+.font-color-green{
+	color: $uni-bg-color-green;
+}
+
+// 背景主题颜色
+.bg-color-theme{
+	background-color: $uni-color-theme;
+}
+// 绿色背景
+.bg-color-green{
+	background-color: $uni-bg-color-green;
+}
+
+// 金额背景
+.bg-color-money{
+	background-color: $uni-bg-color-money;
+}
+
+// 置灰背景
+.bg-color-disabled{
+	background-color: $uni-text-color-grey;
+}
+
+
+
+// 边框
+.border-t{
+	border-top: 1px solid #F6F8FC;
+}
+.border-b{
+	border-bottom: 1px solid #eee;
+}
+.wx-box{
+	border: 1px solid #5DBB41;
+	color: #5DBB41;
+}
+
+.zfb-box{
+	border: 1px solid #3997FF;
+	color: #3997FF;
+}
+.balance-box{
+	border: 1px solid #FF7928;
+	color: #FF7928;
+}
+
+.gift-balance-box{
+	border: 1px solid #f56c6c;
+	color: #f56c6c;
+}
+
+.bold{
+	font-weight: bold;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+
+
+.bottom_btn{
+	position: fixed;
+	width: 690rpx;
+	bottom: 50rpx;
+}
+.weui-tab__content {
+	text-align: center;
+}
+
+.weui-navbar__item {
+	padding: 10px 0;
+}
+
+.weui-loadmore__tips_in-line {
+	background-color: #f4f4f4;
+}
+
+.weui-navbar {
+	background-color: #fff;
+	border-bottom: none;
+	border-top: 2rpx solid #eee;
+}
+
+
+/* weui 1.1.0 样式 */
+.weui-navbar {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	position: fixed;
+	z-index: 500;
+	top: 0;
+	width: 100%;
+	/* border-bottom: 1rpx solid #ccc */
+}
+
+.weui-navbar__item {
+	position: relative;
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	padding: 13px 0;
+	text-align: center;
+	font-size: 0;
+	color: #999;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+	color: #333;
+	font-weight: bold;
+	background: #fff;
+}
+
+.weui-navbar__item:first-child:after {
+	height: 70rpx;
+	right: 0;
+	top: 50%;
+	transform: translate(50%, -50%);
+	border-width: 6rpx;
+}
+
+.weui-navbar__slider {
+	position: absolute;
+	content: ' ';
+	left: 0;
+	bottom: 0;
+	width: 6em;
+	height: 6rpx;
+	background-color: #1aad19;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.weui-navbar__title {
+	display: inline-block;
+	font-size: 15px;
+	max-width: 8em;
+	width: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.weui-tab {
+	position: relative;
+	height: 100%;
+}
+
+.weui-tab__content {
+	display: block;
+}
+
+.weui-tab__panel {
+	box-sizing: border-box;
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.weui-loadmore_line .weui-loadmore__tips {
+	background-color: var(--weui-BG-3);
+}
+
+.flex_shrink0{
+  flex-shrink: 0;
+}
+.html_comment_box{
+	overflow: hidden;
+	flex: 1;
+	.comment_text{
+		word-wrap: break-word;
+		width: 100%;
+		display: inline-block;
+	}
+}
+
+.btn_box {
+	border-radius: 100rpx !important;
+	border: none;
+	background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6));
+	margin: 25rpx 0; 
+}
